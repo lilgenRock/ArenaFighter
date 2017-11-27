@@ -8,19 +8,31 @@ namespace ArenaFighter
 {
     class Character
     {
-        private string _name;                   //public string Name{ get; set;}
+        private string _name;                   
         public int Strength { get; set; }
         public int Health { get; set; }
+        public int RoundHealth { get; set; }
+        List<string> Log = new List<string>();
+        List<string> OpponentNames = new List<string> {"Donald Trump", "Tjock Norris", "Bruus Lii", "Ogabogah", "Batman", "Cartman", "Kenny", "Neo", "Mr Smith", "Onyxia", "El Guapo", "Dr Evil"};
+        List<string> OpponentTitles = new List<string> { "murloc", "lame", "badass", "stinker", "deadly", "whiner", "ass kikker", "walking dead", "breath of death", "ugly", "horny", "smelly one" };
 
         public void InputCharacterStats()
         {
             int difficulty = 0;
             Console.Write("Please enter your champions name: ");
             GetNameFromConsole();
-            Console.WriteLine("Enter difficulty level 1=Nightmare!, 2=Ultra violence, 3=Hurt me plenty, 4=Hey, not too rough, 5=I'm too young to die: ");
+            Console.Write("Enter difficulty level 1=Nightmare!, 2=Ultra violence, 3=Hurt me plenty, 4=Hey, not too rough, 5=I'm too young to die: ");
             difficulty = Convert.ToInt32(GetNumberFromConsole(1,5));
             SetRandomStatsOnDifficulty(difficulty);
             PrintPlayerInfo();
+        }
+
+        public void generateOpponent()
+        {
+            Random Rand = new Random();
+            this.Name = OpponentNames[Rand.Next(0,OpponentNames.Count-1)] + " the " +OpponentTitles[Rand.Next(0,OpponentTitles.Count-1)];
+            this.Strength = Rand.Next(6, 11);
+            this.Health = Rand.Next(6, 11);
         }
 
         public void PrintPlayerInfo()
@@ -31,8 +43,21 @@ namespace ArenaFighter
         public void SetRandomStatsOnDifficulty(int difficulty)
         {
             Random Rand = new Random();
+            Console.WriteLine("Generating random stats based on selected difficulty level...");
             this.Strength = Rand.Next(5,9) + difficulty;    // set strength to random value between 5 and 9 plus difficulty number.
-            this.Health = Rand.Next(5,9) + difficulty;     // same for health
+            this.Health = Rand.Next(5,9) + difficulty;      // same for health
+        }
+
+        public void PrintLog()
+        {
+            Console.WriteLine("\nYour battle log:");
+            this.Log.ForEach(Console.WriteLine);
+        }
+
+            public void AppendLogAndPrint(string newPost)
+        {
+            this.Log.Add(newPost);
+            Console.WriteLine(newPost);
         }
 
         public string Name      
@@ -40,7 +65,7 @@ namespace ArenaFighter
             get { return _name; }
             set
             {
-                if (value.Length < 11 && value.Length > 2)
+                if (value.Length < 30 && value.Length > 2)
                     _name = value;
                 else
                 {
@@ -88,6 +113,5 @@ namespace ArenaFighter
             }
             return num;
         }
-
     }
 }

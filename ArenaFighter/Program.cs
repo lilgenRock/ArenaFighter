@@ -9,8 +9,9 @@ namespace ArenaFighter
     
     class Program
     {
-        bool PlayerAlive = true;
-        bool PlayerRetires = false;
+//        bool PlayerAlive = true;
+//        bool PlayerRetires = false;
+        bool GameContinues = true;
 
         static void Main(string[] args)
         {
@@ -18,14 +19,13 @@ namespace ArenaFighter
             Character c = new Character();
             StartGameMessage();
             c.InputCharacterStats();
-            int Result = 0;
-            while (p.PlayerAlive && !p.PlayerRetires)
+                                                        //int Result = 0;
+            while (p.GameContinues)                     //while (p.PlayerAlive && !p.PlayerRetires)
             {
                 Battle b = new Battle();
-                Result = b.DoBattle(p, c);
+                p.GameContinues = b.DoBattle(p, c);         //Result = b.DoBattle(p, c);
             }
-
-
+            c.PrintLog();
             EndGameMessage();
         }
 
@@ -36,7 +36,7 @@ namespace ArenaFighter
 
         public static void EndGameMessage()
         {
-            Console.WriteLine("Thanx you for playing ArenaFighter. Have a nice day!");
+            Console.WriteLine("Thanx for playing ArenaFighter. Have a nice day!");
             Console.ReadLine();
         }
 
