@@ -32,11 +32,11 @@ namespace ArenaFighter
             player.AppendLogAndPrint(actionString);
             if(player.RoundHealth > 0 && opponent.RoundHealth > 0)
             {
-                return true;
+                return true;        // both still alive and kicking? then return true and continue fighting
             }
             else
             {
-                return false;
+                return false;       // someone died and fight is over. return false to stop.
             }
         }
     }
