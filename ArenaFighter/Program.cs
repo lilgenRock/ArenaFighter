@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ArenaFighter
 {
-    
     class Program
     {
-//        bool PlayerAlive = true;
-//        bool PlayerRetires = false;
         bool GameContinues = true;
 
         static void Main(string[] args)
@@ -19,11 +16,10 @@ namespace ArenaFighter
             Character c = new Character();
             StartGameMessage();
             c.InputCharacterStats();
-                                                        //int Result = 0;
-            while (p.GameContinues)                     //while (p.PlayerAlive && !p.PlayerRetires)
+            while (p.GameContinues)                     
             {
                 Battle b = new Battle();
-                p.GameContinues = b.DoBattle(p, c);         //Result = b.DoBattle(p, c);
+                p.GameContinues = b.DoBattle(p, c);     
             }
             c.PrintLog();
             EndGameMessage();
@@ -39,6 +35,5 @@ namespace ArenaFighter
             Console.WriteLine("Thanx for playing ArenaFighter. Have a nice day!");
             Console.ReadLine();
         }
-
     }
 }
