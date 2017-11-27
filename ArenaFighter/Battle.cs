@@ -10,5 +10,11 @@ namespace ArenaFighter
     {
 
 
+        public int DoBattle(Program p, Character c)
+        {
+
+            return 1;
+        }
+
     }
 }
