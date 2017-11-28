@@ -8,9 +8,10 @@ namespace ArenaFighter
 {
     class Round
     {
+        public static Random Rand = new Random();
         public bool DoRound(Character player, Character opponent)
         {
-            Random Rand = new Random();
+            //Random Rand = new Random();
             int playerRoundStrength = player.Strength + Rand.Next(1, 6) -4;         // lowering strength by 4 to deal less damage and getting more rounds.
             int opponentRoundStrength = opponent.Strength + Rand.Next(1, 6) -4;
             string actionString = "";
