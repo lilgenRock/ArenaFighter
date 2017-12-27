@@ -19,7 +19,7 @@ namespace ArenaFighter
             while (p.GameContinues)                     
             {
                 Battle b = new Battle();
-                p.GameContinues = b.DoBattle(p, c);     
+                p.GameContinues = b.DoBattle(c);     
             }
             c.PrintLog();
             EndGameMessage();

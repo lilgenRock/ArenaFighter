@@ -11,7 +11,7 @@ namespace ArenaFighter
         bool BattleContinues = true;
         int RoundCounter = 0;
 
-        public bool DoBattle(Program p, Character c)
+        public bool DoBattle(Character c)
         {
             string input = "";
             Console.WriteLine("Press enter to start a new battle or x to exit: ");
